@@ -21,7 +21,7 @@ export const Client = ({ navigation, client }) => {
             size={30}
             color="black"
             style={styles.mapIcon}
-            onPress={() => alert('Show location on google map')}
+            onPress={() => navigation.navigate('Location')}
           />
           <Text style={[styles.label, styles.name]}>Klijent:</Text>
           <AntDesign

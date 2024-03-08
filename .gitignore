@@ -33,3 +33,9 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+#vs
+*.vs
+/App.js
+/app.json
+/babel.config.js
