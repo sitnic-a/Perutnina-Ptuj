@@ -1,11 +1,41 @@
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import { FontAwesome } from '@expo/vector-icons'
+import { useState, useEffect } from 'react'
 
 export const Client = ({ navigation, client }) => {
   let navigateToSpecificClient = () => {
     navigation.navigate('Client', client)
   }
+  let [coordinates, setCoordinates] = useState({})
+
+  let testingAddress = 'Hamdije Kreševljakovića 2'
+  let apiKey = '3539a5cda8d544b49794a57827db59ec'
+  let url = `https://api.geoapify.com/v1/geocode/search?name=${testingAddress}&format=json&apiKey=${apiKey}`
+  var requestOptions = {
+    method: 'GET',
+  }
+
+  useEffect(() => {
+    let getCoordinate = () => {
+      fetch(url, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          let addressLongitude = result.results[0].lon
+          console.log('Lon ', addressLongitude)
+          let addressLatitude = result.results[0].lat
+          console.log('Lat ', addressLatitude)
+          setCoordinates({
+            longitude: addressLongitude,
+            latitude: addressLatitude,
+            latitudeDelta: addressLongitude,
+            longitudeDelta: addressLatitude,
+          })
+        })
+        .catch((error) => console.log('error', error))
+    }
+    getCoordinate()
+  }, [])
 
   return (
     <TouchableOpacity
@@ -21,7 +51,12 @@ export const Client = ({ navigation, client }) => {
             size={30}
             color="black"
             style={styles.mapIcon}
-            onPress={() => navigation.navigate('Location')}
+            onPress={() =>
+              navigation.navigate('Location', {
+                client,
+                locationCoordinates: coordinates,
+              })
+            }
           />
           <Text style={[styles.label, styles.name]}>Klijent:</Text>
           <AntDesign
