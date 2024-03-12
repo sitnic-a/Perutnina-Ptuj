@@ -4,11 +4,15 @@ import MapView, { Marker } from 'react-native-maps'
 import { useEffect, useState } from 'react'
 
 export const ClientLocation = ({ navigation }) => {
-  //   console.log('Coordinates of the street ', coordinates)
-  let address = navigation.getParam('location')
-  let coordinates = navigation.getParam('locationCoordinates')
+  // console.log('Navigation ', navigation)
+  let data = navigation.getParam('locationCoordinates')
 
-  //   console.log('Location address is ', address)
+  let coordinates = {
+    longitude: data.lon,
+    latitude: data.lat,
+  }
+  // console.log('Data n', data)
+  console.log('Address coordinates ', coordinates)
 
   let initialRegion = {
     latitude: 43.85643,
