@@ -8,7 +8,23 @@ export const Client = ({ navigation, client }) => {
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Client', client)}
+      onPress={() => {
+        let locationCoordinates
+        // let testingAddress = 'Behdžeta Mutevelića 55'
+        let url = `https://api.geoapify.com/v1/geocode/search?name=${client.location}&format=json&apiKey=3539a5cda8d544b49794a57827db59ec`
+        fetch(url)
+          .then((response) => response.json())
+          .then((result) => {
+            // setCoordinates(result.results[0])
+            // console.log('Coordinates ', coordinates)
+            locationCoordinates = result.results[0]
+            console.log('Data from API', locationCoordinates)
+            navigation.navigate('Client', {
+              client: client,
+              locationCoordinates,
+            })
+          })
+      }}
       style={styles.container}
     >
       <View style={styles.infoBox}>
