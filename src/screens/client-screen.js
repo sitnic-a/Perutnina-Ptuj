@@ -14,11 +14,12 @@ export const ClientScreen = ({ navigation }) => {
   }
 
   let initialRegion = {
-    latitude: 43.85643,
-    longitude: 18.413029,
+    latitude: data.bbox.lat1,
+    longitude: data.bbox.lon1,
     latitudeDelta: 0.02,
-    longitudeDelta: 0.038,
+    longitudeDelta: 0.01,
   }
+  console.log('Region ', initialRegion)
   // console.log('Data n', data)
   console.log('Address coordinates on client screen', coordinates)
 
