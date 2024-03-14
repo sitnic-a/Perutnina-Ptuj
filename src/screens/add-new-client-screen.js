@@ -69,7 +69,10 @@ export const AddNewClient = () => {
             />
           </View>
         </ScrollView>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => alert('New client saved')}
+        >
           <Text style={styles.buttonText}>Save</Text>
         </TouchableOpacity>
       </View>

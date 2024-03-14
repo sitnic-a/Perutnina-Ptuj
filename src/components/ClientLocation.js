@@ -1,8 +1,6 @@
 import { StyleSheet, View } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 
-import { useEffect, useState } from 'react'
-
 export const ClientLocation = ({ navigation }) => {
   // console.log('Navigation ', navigation)
   let data = navigation.getParam('locationCoordinates')
@@ -11,24 +9,23 @@ export const ClientLocation = ({ navigation }) => {
     longitude: data.lon,
     latitude: data.lat,
   }
-  // console.log('Data n', data)
-  console.log('Address coordinates ', coordinates)
 
   let initialRegion = {
-    latitude: 43.85643,
-    longitude: 18.413029,
-    latitudeDelta: 0.002,
-    longitudeDelta: 0.048,
+    latitude: data.bbox.lat1,
+    longitude: data.bbox.lon1,
+    latitudeDelta: 0.02,
+    longitudeDelta: 0.01,
   }
-
-  let initialMarker = {
-    latitude: 43.85643,
-    longitude: 18.413029,
-  }
+  console.log('Region ', initialRegion)
+  console.log('Address coordinates ', coordinates)
 
   return (
     <View style={styles.container}>
-      <MapView initialRegion={initialRegion} style={styles.map}>
+      <MapView
+        initialRegion={initialRegion}
+        style={styles.map}
+        // onMapReady={() => setClientRegion(coordinatesRegion)}
+      >
         {coordinates && <Marker coordinate={coordinates}></Marker>}
       </MapView>
     </View>

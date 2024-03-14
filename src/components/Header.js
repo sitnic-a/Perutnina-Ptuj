@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     height: 80,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     borderBottomColor: '#ddd',
     borderTopColor: '#fff',
     borderWidth: 1,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   headerLogo: {
-    width: 50,
-    height: 60,
+    width: 80,
+    height: 80,
   },
 })
