@@ -124,11 +124,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 5,
     top: 0,
+    zIndex: 1,
   },
   updateIcon: {
     position: 'absolute',
     right: 5,
     top: 2,
+    zIndex: 1,
   },
   label: {
     textAlign: 'center',

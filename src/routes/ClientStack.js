@@ -3,6 +3,7 @@ import { createAppContainer } from 'react-navigation'
 import { ClientsScreen } from '../screens/clients-screen'
 import { ClientScreen } from '../screens/client-screen'
 import { ClientLocation } from '../components/ClientLocation'
+import { AddNewClient } from '../screens/add-new-client-screen'
 
 const screens = {
   Clients: {
@@ -10,6 +11,9 @@ const screens = {
   },
   Location: {
     screen: ClientLocation,
+  },
+  'New Client': {
+    screen: AddNewClient,
   },
   Client: {
     screen: ClientScreen,

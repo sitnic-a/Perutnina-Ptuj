@@ -3,6 +3,7 @@ import { StatusList } from './StatusList'
 import { Client } from './Client'
 import { useState } from 'react'
 import { data_clients } from '../data-dummy'
+import { Ionicons } from '@expo/vector-icons'
 
 export const Clients = ({ navigation }) => {
   let [clients, setClients] = useState(data_clients)
@@ -22,6 +23,15 @@ export const Clients = ({ navigation }) => {
         style={styles.statusContainer}
         handleStatusChange={handleStatusChange}
       />
+      <View style={styles.addClientBox}>
+        <Ionicons
+          onPress={() => navigation.navigate('New Client')}
+          style={styles.addClientIcon}
+          size={55}
+          name="person-add-sharp"
+          color="#fff"
+        />
+      </View>
       <ScrollView style={styles.clientsContainer}>
         {clients.map((client) => {
           return (
@@ -46,7 +56,19 @@ const styles = StyleSheet.create({
   client: {
     marginVertical: 8,
   },
-  clientList: {
-    marginTop: 10,
+  addClientBox: {
+    margin: 'auto',
+    zIndex: 1,
+    width: 70,
+    height: 70,
+    backgroundColor: 'green',
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    borderRadius: 60,
+  },
+  addClientIcon: {
+    left: 5,
+    top: 5,
   },
 })

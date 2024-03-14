@@ -15,5 +15,6 @@ const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
     borderWidth: 0,
+    // backgroundColor: '#fff',
   },
 })
